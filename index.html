@@ -179,7 +179,9 @@ const engine = new Engine(GODOT_CONFIG);
 		}
 	} else {
 		setStatusMode('loading');
+
 		engine.startGame().then(() => {
+			window.parent.postMessage("gameLoaded", "*");
 			setStatusMode('hidden');
 		}, displayFailureNotice);
 	}
